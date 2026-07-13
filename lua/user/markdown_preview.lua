@@ -1,0 +1,14 @@
+local status_ok, markdown_preview = pcall(require, "markdown_preview")
+if not status_ok then return end
+
+markdown_preview.setup({
+  instance_mode = "takeover",
+  port = 0,
+  open_browser = true,
+  default_theme = "dark",
+  debounce_ms = 300,
+})
+
+vim.keymap.set("n", "<leader>mps", "<cmd>MarkdownPreview<cr>", { desc = "Markdown: Start preview" })
+vim.keymap.set("n", "<leader>mpS", "<cmd>MarkdownPreviewStop<cr>", { desc = "Markdown: Stop preview" })
+vim.keymap.set("n", "<leader>mpr", "<cmd>MarkdownPreviewRefresh<cr>", { desc = "Markdown: Refresh preview" })
